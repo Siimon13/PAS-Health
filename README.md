@@ -31,3 +31,7 @@ All code is ran through view.py(controller)
 Making a new form requires you to add a valid form to form.py [Read More](https://docs.djangoproject.com/en/1.10/topics/forms/)
 
 If you want to use a database, use model.py [Read More](https://docs.djangoproject.com/en/1.10/topics/db/models/)
+
+Database code is added, Database can take sql injections by using raw() [Read More](https://docs.djangoproject.com/en/1.10/topics/db/sql/)
+
+Using Bootstrap for CSS
