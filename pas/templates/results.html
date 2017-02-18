@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+  <div class="container">
+    <a href="/" class="lang-logo">
+      <img src="{% static 'lang-logo.png'%}">
+    </a>
+    <h1>PAS Health</h1>
+  </div>
+</div>
+
+<div class="container">
+    
+    <h1> {{message}} </h1>
+
+    <h1> {{user.first_name}} {{user.last_name}}</h1>
+
+    <h2> TDEE: Run all this info through TDEE equation </h2>
+
+    <h1> Track yourself </h1>
+    
+    {% csrf_token %}
+    <form class="form-inline" method="POST" action=""> 
+	Some sort of form to track what they eat
+    </form>
+    
+        
+</div>
+
+{% endblock %}

@@ -26,12 +26,6 @@
 	<input class='form-control' type="text" id="ethnicity" name="ethnicity" placeholder="Ethnicity"/> 
 	<br>
 
-	<input class='form-control' type="text" id="age" name="age" placeholder="Age"/> 
-	<br>
-
-	<input class='form-control' type="text" id="lifestyle" name="lifestyle" placeholder="lifestyle"/> 
-	<br>
-
 	<input class='form-control' type="text" id="gender" name="gender" placeholder="Gender"/> 
 	<br>
 
@@ -39,9 +33,6 @@
 	<br>
 
 	<input class='form-control' type="text" id="goal_weight" name="goal_weight" placeholder="Goal Weight"/> 
-	<br>
-
-	<input class='form-control' type="text" id="weeks" name="weeks" placeholder="Goal Weight"/> 
 	<br>
 
 	<button type="submit" class="btn btn-primary">Find Diet</button>
