@@ -34,8 +34,8 @@ def index(request):
                 u = query[0]
                 u.current_weight = user["current_weight"]
                 u.goal_weight = user["goal_weight"]
-            print query
-            print user
+            print (query)
+            print (user)
             
             # return renderresults(request, user)
             
