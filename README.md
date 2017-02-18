@@ -1,44 +1,33 @@
 # python-getting-started
 
-A barebones Python app, which can easily be deployed to Heroku.
-
-This application supports the [Getting Started with Python on Heroku](https://devcenter.heroku.com/articles/getting-started-with-python) article - check it out.
+Barebone WebApp
 
 ## Running Locally
 
-Make sure you have Python [installed properly](http://install.python-guide.org).  Also, install the [Heroku Toolbelt](https://toolbelt.heroku.com/) and [Postgres](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup).
-
+Make sure you have Python [installed properly](http://install.python-guide.org)
 ```sh
-$ git clone git@github.com:heroku/python-getting-started.git
-$ cd python-getting-started
+$ git clone https://github.com/Siimon13/PAS-Health.git
+$ cd PAS-Health
 
 $ pip install -r requirements.txt
-
-$ createdb python_getting_started
 
 $ python manage.py migrate
 $ python manage.py collectstatic
 
-$ heroku local
+$ python manage.py runserver
 ```
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
-
-## Deploying to Heroku
-
-```sh
-$ heroku create
-$ git push heroku master
-
-$ heroku run python manage.py migrate
-$ heroku open
-```
-or
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+Your app should now be running on [localhost:8000](http://localhost:8000/).
 
 ## Documentation
 
-For more information about using Python on Heroku, see these Dev Center articles:
+The app is based in pas
+The static folder is in gettingstarted(For imgs/js/css)
 
-- [Python on Heroku](https://devcenter.heroku.com/categories/python)
+The templates have examples of loading static and forms
+
+All code is ran through view.py(controller)
+
+Making a new form requires you to add a valid form to form.py [Read More](https://docs.djangoproject.com/en/1.10/topics/forms/)
+
+If you want to use a database, use model.py [Read More](https://docs.djangoproject.com/en/1.10/topics/db/models/)
