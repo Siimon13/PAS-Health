@@ -11,15 +11,23 @@ import random
 # Create your views here.
 
 weight = []
+age_max = 0
+age_min = 0
+weight_min = 0
+weight_max = 0
+height_min = 0
+height_max = 0
+inputdic = []
 
 @csrf_exempt 
 def index(request):
     global weight
+    global inputdic
+    inputdic = []
     weight = []
-    # return HttpResponse('Hello from Python!')
+
     train_response()
-    for i in weight:
-        print(i)
+    # return HttpResponse('Hello from Python!')
     return render(request, 'index.html')
 
 
@@ -102,12 +110,10 @@ def update_results(request, message=""):
 def calculateOutput(threshold1, threshold2, threshold3, threshold4, threshold5, inputdic = []):
 	global weight
 	result = 0.0
-        print(inputdic)
 	for i,j in zip(weight,inputdic):
-            print i
-            print j
             result += i * float(j) 
 
+        print(result)
 	if(result <= threshold1):
 		return 0
 	elif(result <= threshold2):
@@ -121,28 +127,75 @@ def calculateOutput(threshold1, threshold2, threshold3, threshold4, threshold5, 
 	elif(result > threshold5):
 		return 1
 
+def normalize(inputsdic = []):
+    global age_min, age_max, weight_min, weight_max, height_min, height_max
+    age_min = inputsdic[0][1]
+    age_max = inputsdic[0][1]
+    weight_min = inputsdic[0][2]
+    weight_max = inputsdic[0][2]
+    height_min = inputsdic[0][4]
+    height_max = inputsdic[0][4]
+
+    for i in range(1,len(inputsdic)):
+        if(inputsdic[i][1] < age_min):
+            age_min = inputsdic[i][1]
+        elif(inputsdic[i][1] > age_max):
+            age_max = inputsdic[i][1]
+        
+        if(inputsdic[i][2] < weight_min):
+            weight_min = inputsdic[i][2]
+        elif(inputsdic[i][2] > weight_max):
+            weight_max = inputsdic[i][2]
+        
+        if(inputsdic[i][4] < height_min):
+            height_min = inputsdic[i][4]
+        elif(inputsdic[i][4] > height_max):
+            height_max = inputsdic[i][4]
+
+    for i in range(len(inputsdic)):
+        inputsdic[i][1] = (inputsdic[i][1] - age_min)/(age_max - age_min)
+        inputsdic[i][2] = (inputsdic[i][2] - weight_min)/(weight_max - weight_min)
+        inputsdic[i][4] = (inputsdic[i][4] - height_min)/(height_max - height_min)
+
 def train_response():
 	global weight
 	output = []
 	uall = User.objects.all()
-	inputdic = []
+        global inputdic
 	for u in uall:
    		life = 0
    		gen = 0
+                ethnicity = 0
    		if(u.lifestyle == "Sedentary"):
-   			life = 1
+   			life = 0.2
    		elif(u.lifestyle == "Lightly active"):
-   			life = 2
+   			life = 0.4
    		elif(u.lifestyle == "Moderately active"):
-   			life = 3
+   			life = 0.6
    		elif(u.lifestyle == "Very active"):
-   			life = 4
+   			life = 0.8
    		elif(u.lifestyle == "Extremely active"):
-   			life = 5
+   			life = 1.0
    		if(u.gender == "Male"):
    			gen = 1
    		elif(u.gender == "Female"):
-   			gen = 2
+   			gen = 0.5
+
+                if(u.ethnicity == "Hispanic or Latino"):
+                    ethnicity = 0.15
+                elif(u.ethnicity == "White American"):
+                    ethnicity = 0.3
+                elif(u.ethnicity == "Africans"):
+                    ethnicity = 0.45
+                elif(u.ethnicity == "Asian Americans"):
+                    ethnicity = 0.6
+                elif(u.ethnicity == "Native Americans"):
+                    ethnicity = 0.75
+                elif(u.ethnicity == "Middle Easterners"):                
+                    ethnicity = 1.0
+                else:
+                    ethnicity = 1
+
                 if(u.current_diet == "Paleo"):
                     output.append(0)
                 elif(u.current_diet == "Low-Carb"):
@@ -155,41 +208,72 @@ def train_response():
                     output.append(0.8)
                 elif(u.current_diet == "Fasting"):
                     output.append(1)
-                inputdic.append([u.age, u.current_weight, life, u.current_height, gen])
+                inputdic.append([ethnicity, u.age, u.current_weight, life, u.current_height, gen])
 
-	for i in range(0, 5):
+        normalize(inputdic)
+        #for i in inputdic:
+            #print i
+	for i in range(0, 6):
 		weight.append(random.random())
+        #print(weight)
 
 	for x in range(0, 1000):
 		totalError = 0
 		for i in range(len(output)):
-                    out = calculateOutput(0.01, 0.03, 0.05, 0.08, 0.1, inputdic[i])
+                    out = calculateOutput(-0.4,-0.1 , 0, 0.15, 0.4, inputdic[i])
+                    print(out)
                     error = output[i] - out
                     totalError += error
-                    for r, y in zip(weight, inputdic[i]):
-    			r += 0.1 * error * y
+                    for r in range(len(weight)):
+                        weight[r] = weight[r] + 0.3 * error * inputdic[i][r] 
 
 def test_response(user):
 	global weight
-	life = 0
-   	gen = 0
-        if(user["lifestyle"] == "Sedentary"): 
-            life = 1
-        elif(user["lifestyle"] == "Lightly active"): 
-            life = 2
-        elif(user["lifestyle"] == "Moderately active"): 
-            life = 3
-        elif(user["lifestyle"] == "Very active"): 
-            life = 4
-        elif(user["lifestyle"] == "Extremely active"): 
-            life = 5
-
-        if(user["gender"] == "Male"): 
+        global inputdic
+        global age_min
+        global age_max
+        global weight_min
+        global weight_max
+        global height_min
+        global height_max
+        life = 0
+        gen = 0
+        ethnicity = 0
+        if(user["lifestyle"] == "Sedentary"):
+            life = 0.2
+        elif(user["lifestyle"] == "Lightly active"):
+            life = 0.4
+        elif(user["lifestyle"] == "Moderately active"):
+            life = 0.6
+        elif(user["lifestyle"] == "Very active"):
+            life = 0.8
+        elif(user["lifestyle"] == "Extremely active"):
+            life = 1.0
+        if(user["gender"] == "Male"):
             gen = 1
-        elif(user["gender"] == "Female"): 
-            gen = 2
-        inputdic = [user["age"], user["current_weight"], life, user["current_height"], gen]
-        out = calculateOutput(0.01, 0.03, 0.05, 0.08, 0.1, inputdic)
+        elif(user["gender"] == "Female"):
+            gen = 0.5
+
+        if(user["ethnicity"] == "Hispanic or Latino"):
+            ethnicity = 0.15
+        elif(user["ethnicity"] == "White American"):
+            ethnicity = 0.3
+        elif(user["ethnicity"] == "Africans"):
+            ethnicity = 0.45
+        elif(user["ethnicity"] == "Asian Americans"):
+            ethnicity = 0.6
+        elif(user["ethnicity"] == "Native Americans"):
+            ethnicity = 0.75
+        elif(user["ethnicity"] == "Middle Easterners"):                
+            ethnicity = 1.0
+        else:
+            ethnicity = 1
+
+        inputarr = [ethnicity, user["age"], user["current_weight"], life, user["current_height"], gen]
+        inputarr[1] = (float(inputarr[1]) - age_min)/(age_max-age_min)
+        inputarr[2] = (float(inputarr[2]) - weight_min)/(weight_max-weight_min)
+        inputarr[4] = (float(inputarr[4]) - height_min)/(height_max-height_min)
+        out = calculateOutput(-0.4, -0.1, 0, 0.15, 0.4, inputarr)
 
         if(out == 0): 
             return "Paleo"
