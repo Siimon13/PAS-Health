@@ -10,8 +10,8 @@ import pas.views
 # url(r'^blog/', include('blog.urls')),
 
 urlpatterns = [
-    url(r'^$', pas.views.index, name='index'),
+        url(r'^$', pas.views.index, name='index'),
     url(r'^render_results/$', pas.views.render_results, name = 'results'),
     url(r'^update_results/$', pas.views.update_results, name = 'update'),
     url(r'^admin/', include(admin.site.urls)),
-]
+    ]

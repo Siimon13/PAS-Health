@@ -12,6 +12,7 @@ class UserForm(forms.Form):
     current_weight = forms.CharField(max_length = 200, required = False)
     goal_weight = forms.CharField(max_length = 200, required = False)
     current_height = forms.CharField(max_length = 200, required = False)
+    current_diet = forms.CharField(max_length = 200, required = False)
 
 class UpdateForm(forms.Form):
     options = forms.CharField(max_length = 200, required = False)

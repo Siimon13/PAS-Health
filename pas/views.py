@@ -44,6 +44,18 @@ def render_results(request, message=""):
             print (query)
             print (user)
 
+    uall = User.objects.all()
+    for u in uall:
+    	print(u.first_name)
+    	print(u.last_name)
+    	print(u.ethnicity)
+    	print(u.age)
+    	print(u.lifestyle)
+    	print(u.gender)
+    	print(u.current_weight)
+    	print(u.goal_weight)
+    	print(u.current_height)
+
     context  = {'user' : user , 'message': message}
     template = 'results.html'
 
@@ -52,10 +64,10 @@ def render_results(request, message=""):
 def update_results(request, message=""): 
     if request.method == 'POST':
         form = UpdateForm(request.POST)
-        print request.POST
+        print (request.POST)
 
         if form.is_valid():
-            print "Valid"
-            print form.cleaned_data
+            print ("Valid")
+            print (form.cleaned_data)
 
     return index(request)
