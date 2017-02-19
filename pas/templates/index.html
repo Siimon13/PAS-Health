@@ -5,53 +5,90 @@
 
 <div class="jumbotron text-center">
   <div class="container">
-    <a href="/" class="lang-logo">
-      <img src="{% static 'lang-logo.png'%}">
-    </a>
-    <h1>PAS Health</h1>
-    <p1>An application to keep track of your diet and maintain a happier and healthier you. </p1>
+      <a href="/" class="lang-logo">
+	  <img src="{% static 'lang-logo.svg'%}">
+      </a>
+      <h1>PAS Health</h1>
+      <p1>An application to keep track of your diet and maintain a happier and healthier you. </p1>
+
+      <h2> {{message}} </h2>
   </div>
 </div>
 
 <div class="container">
 
     {% csrf_token %}
+
+
     <form class="form-inline" method="GET" action="render_results/">
 	<!-- <input class='form-control' type="text" id="first_name" name="first_name" placeholder="First Name"/>  -->
-	<input class='form-control' type="text" id="first_name" name="first_name" placeholder="First Name"/> 
-	<br>
+	<div class="col-md-6">
+	    <input class='form-control' type="text" id="first_name" name="first_name" placeholder="First Name"/ required> 
+	    <br>
 
-	<!-- <input class='form-control' type="text" id="last_name" name="last_name" placeholder="Last Name"/>  -->
-	<input class='form-control' type="text" id="last_name" name="last_name" placeholder="Last Name"/> 
-	<br>
+	    <!-- <input class='form-control' type="text" id="last_name" name="last_name" placeholder="Last Name"/>  -->
+	    <input class='form-control' type="text" id="last_name" name="last_name" placeholder="Last Name"/ required> 
+	    <br>
+	    <!-- <input class='form-control' type="text" id="age" name="age" placeholder="Age"/> -->
+	    <input class='form-control' type="text" id="age" name="age" placeholder="Age"/> 
+
+	    <br>
+
+	
+	    <input class='form-control' type="text" id="current_weight" name="current_weight" placeholder="Current Weight"/ required> 
+	    <br>
+
+	    <input class='form-control' type="text" id="goal_weight" name="goal_weight" placeholder="Goal Weight"/ required> 
+	    <br>
+
+	    <input class='form-control' type="text" id="current_height" name="current_height" placeholder="Height in cm"/ required> 
+	</div>
 
 	<!-- <input class='form-control' type="text" id="ethnicity" name="ethnicity" placeholder="Ethnicity"/>  -->
-	<input class='form-control' type="text" id="ethnicity" name="ethnicity" placeholder="Ethnicity"/> 
-	<br>
+	<!-- <input class='form-control' type="text" id="ethnicity" name="ethnicity" placeholder="Ethnicity"/> -->
+	
+	<div class="col-md-6">
+	    <select class="form-control" id="ethnicity" name="ethnicity" >
+		<option> Select your ethnicity </option>
+		<option> Hispanic or Latino</option>
+		<option> White Americans </option>
+		<option> Africans </option>
+		<option> Asian Americans </option>
+		<option> Native Americans </option>
+		<option> Native Hawaiians </option>
+		<option> Middle Easterners </option>
+		<option> Other </option>
+	    </select>
+	    <br>
+	    <br>
+	    <!-- <input class='form-control' type="text" id="lifestyle" name="lifestyle" placeholder="Lifestyle"/>  -->
+	    <select class="form-control" id="lifestyle" name="lifestyle" >
+		<option> Select your lifestyle </option>
+		<option> Sedentary </option>
+		<option> Lightly active </option>
+		<option> Moderately active </option>
+		<option> Very active </option>
+		<option> Extremely active </option>
+	    </select>
 
-	<!-- <input class='form-control' type="text" id="age" name="age" placeholder="Age"/>  -->
-	<input class='form-control' type="text" id="age" name="age" placeholder="Age"/> 
-	<br>
+	    <br>
+	    <br>
 
-	<input class='form-control' type="text" id="lifestyle" name="lifestyle" placeholder="Lifestyle"/> 
-	<br>
+	    <!-- <input class='form-control' type="text" id="gender" name="gender" placeholder="Gender"/>  -->
+	    <select class="form-control" id="gender" name="gender" >
+		<option> Select your gender </option>
+		<option> Male </option>
+		<option> Female </option>
+		<option> Other </option>
+	    </select>
+	    
+	    <br>
+	    <br>
+	    <br>
 
-	<input class='form-control' type="text" id="gender" name="gender" placeholder="Gender"/> 
-	<br>
-
-	<input class='form-control' type="text" id="current_weight" name="current_weight" placeholder="Current Weight"/> 
-	<br>
-
-	<input class='form-control' type="text" id="goal_weight" name="goal_weight" placeholder="Goal Weight"/> 
-	<br>
-
-	<input class='form-control' type="text" id="current_height" name="current_height" placeholder="Height in cm"/> 
-	<br>
-	<br>
-
-	<button type="submit" class="btn btn-primary" name = "submitting">Find Diet</button>
+	    <button type="submit" class="btn btn-primary" name = "submitting">Find Diet</button>
     </form>
-
+	</div>
 </div>
 
 {% endblock %}

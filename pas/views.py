@@ -2,14 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from .forms import UserForm
+from .forms import UserForm, UpdateForm
 from .models import User
 # Create your views here.
 
 @csrf_exempt 
 def index(request):
     # return HttpResponse('Hello from Python!')
-            
     return render(request, 'index.html')
 
 
@@ -49,3 +48,14 @@ def render_results(request, message=""):
     template = 'results.html'
 
     return render(request, template, context)
+
+def update_results(request, message=""): 
+    if request.method == 'POST':
+        form = UpdateForm(request.POST)
+        print request.POST
+
+        if form.is_valid():
+            print "Valid"
+            print form.cleaned_data
+
+    return index(request)

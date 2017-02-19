@@ -7,7 +7,7 @@
 <div class="jumbotron text-center">
   <div class="container">
     <a href="/" class="lang-logo">
-      <img src="{% static 'lang-logo.png'%}">
+	<img src="{% static 'lang-logo.svg'%}">
     </a>
     <h1>PAS Health</h1>
   </div>
@@ -19,54 +19,329 @@
 
     <h1> {{user.first_name}} {{user.last_name}}</h1>
 
-   <h2> TDEE: Run all this info through TDEE equation </h2>
+    <h4> TDEE: Run all this info through TDEE equation </h4>
+    <a href="#" title="Total Daily Energy Expenditure:" data-toggle="popover" data-trigger="focus" data-content=" To gain weight you eat more than your TDEE and to lose weight you eat less."> What is TDEE? </a>
 
-    <h1> Track yourself </h1>
+    <span class="span3" tabindex="0">Hide Me</span>
+    <span class="span2" tabindex="0">Show Me</span>
+    <p class="alert" >Some alarming information here</p>
+    <p class="alert" >Some more info</p>
+
+    <h2> Recommended Diet: </h2>
+    <h3> Select a diet: </h3>
+
+    <form class="form-inline" method="POST" action="/update_results/">
+
+	<input type="text" id="hashid" name="hashid" class="hidden" value={{user.hashid}}> 
+
+	<div class="btn-group" data-toggle="buttons">
+
+	    <label class="btn btn-info">
+		<input type="radio" name="options" id="option1" value="Paleo" autocomplete="off" checked> Paleo
+	    </label>
+
+	    <br>
+	    <br>
+
+	    <p>The paleo diet emphasizes whole foods, lean protein, vegetables, fruits, nuts and seeds, while avoiding processed foods, sugar, dairy and grains. </p> 
+	    <br>
+
+	    <h5> Sample Macro Table </h5>
+	    
+	    <table class = "table">
+		<caption>Basic Table Layout</caption>
+		
+		<thead>
+		    <tr>
+			<th>Macronutrient</th>
+			<th>Percentage Of Total Colarie Intake</th>
+		    </tr>
+		</thead>
+		
+		<tbody>
+		    <tr>
+			<td>Protein</td>
+			<td>15%</td>
+		    </tr>
+
+		    <tr>
+			<td>Carbohydrates</td>
+			<td>20%</td>
+		    </tr>
+
+		    <tr>
+			<td>Fat</td>
+			<td>65%</td>
+		    </tr>
+		    
+		</tbody>
+		
+	    </table>
+
+
+	    <br>
+
+	    <label class="btn btn-info">
+		<input type="radio" name="options" id="option2" value="Low-Carb" autocomplete="off"> Low-Carb
+	    </label>
+	    <br>
+	    <br>
+	    <p>Low-carb diets are based on eating unlimited amounts of protein and fat, while severely limiting your carb intake. </p>
+	    <br>
+
+	    <h5> Sample Macro Table </h5>
+	    
+	    <table class = "table">
+		<caption>Basic Table Layout</caption>
+		
+		<thead>
+		    <tr>
+			<th>Macronutrient</th>
+			<th>Percentage Of Total Colarie Intake</th>
+		    </tr>
+		</thead>
+		
+		<tbody>
+		    <tr>
+			<td>Protein</td>
+			<td>25%</td>
+		    </tr>
+
+		    <tr>
+			<td>Carbohydrates</td>
+			<td>10%</td>
+		    </tr>
+
+		    <tr>
+			<td>Fat</td>
+			<td>65%</td>
+		    </tr>
+		    
+		</tbody>
+		
+	    </table>
+
+	    <label class="btn btn-info">
+		<input type="radio" name="options" id="option3" value="Ultra Low-Fat" autocomplete="off"> Ultra Low-Fat
+	    </label>
+	    <br>
+	    <br>
+
+	    <p>An ultra low-fat diet contains 10% or fewer calories from fat. The diet is mostly plant-based and has a limited intake of animal products </p>
+	    <br>
+
+	    <h5> Sample Macro Table </h5>
+	    
+	    <table class = "table">
+		<caption>Basic Table Layout</caption>
+		
+		<thead>
+		    <tr>
+			<th>Macronutrient</th>
+			<th>Percentage Of Total Colarie Intake</th>
+		    </tr>
+		</thead>
+		
+		<tbody>
+		    <tr>
+			<td>Protein</td>
+			<td>10%</td>
+		    </tr>
+
+		    <tr>
+			<td>Carbohydrates</td>
+			<td>80%</td>
+		    </tr>
+
+		    <tr>
+			<td>Fat</td>
+			<td>10%</td>
+		    </tr>
+		    
+		</tbody>
+		
+	    </table>
+
+	    <label class="btn btn-info">
+		<input type="radio" name="options" id="option3" value="Atkins" autocomplete="off"> Atkins
+	    </label>
+	    <br>
+	    <br>
+
+	    <p>The Atkins diet is split into four phases. It starts with an induction phase, during which you eat under 20 grams of carbs per day for two weeks. The other phases involve slowly reintroducing healthy carbs back into your diet as you approach your goal weight. </p>
+	    <br>
+
+	    <h5> Sample Macro Table </h5>
+	    
+	    <table class = "table">
+		<caption>Basic Table Layout</caption>
+		
+		<thead>
+		    <tr>
+			<th>Macronutrient</th>
+			<th>Percentage Of Total Colarie Intake</th>
+		    </tr>
+		</thead>
+		
+		<tbody>
+		    <tr>
+			<td>Protein</td>
+			<td>35%</td>
+		    </tr>
+
+		    <tr>
+			<td>Carbohydrates</td>
+			<td>10%</td>
+		    </tr>
+
+		    <tr>
+			<td>Fat</td>
+			<td>55%</td>
+		    </tr>
+		    
+		</tbody>
+		
+	    </table>
+
+	    <label class="btn btn-info">
+		<input type="radio" name="options" id="option3" value="Zone Diet" autocomplete="off"> Zone Diet
+	    </label>
+	    <br>
+	    <br>
+
+	    <p>The Zone diet recommends balancing each meal with one-third protein, two-thirds colorful fruits and veggies and a dash of fat, namely monounsaturated oil such as olive oil, avocado or almonds.  </p>
+	    <br>
+
+	    <h5> Sample Macro Table </h5>
+	    
+	    <table class = "table">
+		<caption>Basic Table Layout</caption>
+		
+		<thead>
+		    <tr>
+			<th>Macronutrient</th>
+			<th>Percentage Of Total Colarie Intake</th>
+		    </tr>
+		</thead>
+		
+		<tbody>
+		    <tr>
+			<td>Protein</td>
+			<td>30%</td>
+		    </tr>
+
+		    <tr>
+			<td>Carbohydrates</td>
+			<td>40%</td>
+		    </tr>
+
+		    <tr>
+			<td>Fat</td>
+			<td>30%</td>
+		    </tr>
+		    
+		</tbody>
+		
+	    </table>
+
+	    <label class="btn btn-info">
+		<input type="radio" name="options" id="option3" value="Fasting" autocomplete="off"> Intermittent Fasting
+	    </label>
+	    <br>
+	    <br>
+
+	    <p> Intermittent fasting is commonly used for weight loss because it leads to relatively easy calorie restriction. It can make you eat fewer calories overall, as long as you don’t overcompensate by eating much more during the eating periods.</p>
+
+	    <h5> Most Popular Ways </h5>
+	    
+	    <table class = "table">
+		<caption>Basic Table Layout</caption>
+		
+		<thead>
+		    <tr>
+			<th>Name</th>
+			<th>Process</th>
+		    </tr>
+		</thead>
+		
+		<tbody>
+		    <tr>
+			<td>16/8</td>
+			<td>Involves skipping breakfast and restricting your daily eating period to 8 hours, subsequently fasting for the remaining 16 hours of the day.</td>
+		    </tr>
+
+		    <tr>
+			<td>Eat-Stop-Eat</td>
+			<td>Involves 24-hour fasts once or twice per week on non-consecutive days.</td>
+		    </tr>
+
+		    <tr>
+			<td>5:2</td>
+			<td>On two non-consecutive days of the week, you restrict your intake to 500–600 calories. On the five remaining days, you eat like normal.</td>
+		    </tr>
+
+		    <tr>
+			<td>Warrior</td>
+			<td> Eat small amounts of raw fruits and vegetables during the day and one huge meal at night, basically fasting during the day and feasting at night within a 4-hour window.</td>
+		    </tr>
+		    
+		</tbody>
+		
+	    </table>
+
+	</div>
+
     
-    {% csrf_token %}
-    <form class="form-inline" method="POST" action=""> 
-	Some sort of form to track what they eat
+	{% csrf_token %}
+	
+	<div>
+    <button type="submit" class="btn btn-primary" name = "submitting">Update Info</button>
+</div>
+
     </form>
     
-        
 </div>
 
 <script type = "text/javascript">
-      var age = "{{user.age}}";
-      var lifestyle = "{{user.lifestyle}}";
-      var height = "{{user.current_height}}";
-      var weight = "{{user.current_weight}}"
-      var gender = "{{user.gender}}"
-      var conversion = 0.45359237;
-      var BMR;
-      var TDEE;
+ var age = "{{user.age}}";
+ var lifestyle = "{{user.lifestyle}}";
+ var height = "{{user.current_height}}";
+ var weight = "{{user.current_weight}}"
+ var gender = "{{user.gender}}"
+ var conversion = 0.45359237;
+ var BMR;
+ var TDEE;
 
-      //Calculate BMR for different gender, depends on User
-      if(gender == 'Male' || gender == 'boy' || gender == 'Boy' || gender == 'male'){
-            var kg = weight * conversion;
-            BMR = 66 + (13.7 * kg) + (5 * height)-(6.8 * age);
-            console.log(BMR);
-      }
-      else{
-        var kg = weight * conversion;
-        BMR = 655 + (9.6*kg) + (1.8*height) - (4.7*age);
-        console.log(BMR);
-      }
+ $(document).ready(function(){
+     $('[data-toggle="popover"]').popover();   
+ });
 
-      //Calculate the TDEE with the lifestyle selected
-      if(lifestyle == 'Sedentary' || lifestyle == 'sedentary')
-        TDEE = 1.2 * BMR;
-      else if(lifestyle == 'Lightly active' || lifestyle == 'lightly active' || lifestyle == 'Lightly Active')
-          TDEE = 1.375 * BMR;
-      else if(lifestyle == 'Moderately active' || lifestyle == 'moderately active' || lifestyle == 'Moderately Active')
-          TDEE = 1.55 * BMR;
-      else if(lifestyle == 'Very active' || lifestyle == 'very active' || lifestlye == 'Very Active')
-          TDEE = 1.725 * BMR;
-      else if(lifestyle == 'Extremely active' || lifestyle == 'extremely active' || lifestyle == 'Extremely Active')
-          TDEE = 1.9 * BMR;
+ //Calculate BMR for different gender, depends on User
+ if(gender == 'Male' || gender == 'boy' || gender == 'Boy' || gender == 'male'){
+     var kg = weight * conversion;
+     BMR = 66 + (13.7 * kg) + (5 * height)-(6.8 * age);
+     console.log(BMR);
+ }
+ else{
+     var kg = weight * conversion;
+     BMR = 655 + (9.6*kg) + (1.8*height) - (4.7*age);
+     console.log(BMR);
+ }
 
-     document.getElementsByTagName('h2')[0].innerHTML = 'Your TDEE is ' + TDEE.toFixed(2) + ' calories per day';
+ //Calculate the TDEE with the lifestyle selected
+ if(lifestyle == 'Sedentary' || lifestyle == 'sedentary')
+     TDEE = 1.2 * BMR;
+ else if(lifestyle == 'Lightly active' || lifestyle == 'lightly active' || lifestyle == 'Lightly Active')
+     TDEE = 1.375 * BMR;
+ else if(lifestyle == 'Moderately active' || lifestyle == 'moderately active' || lifestyle == 'Moderately Active')
+     TDEE = 1.55 * BMR;
+ else if(lifestyle == 'Very active' || lifestyle == 'very active' || lifestlye == 'Very Active')
+     TDEE = 1.725 * BMR;
+ else if(lifestyle == 'Extremely active' || lifestyle == 'extremely active' || lifestyle == 'Extremely Active')
+     TDEE = 1.9 * BMR;
 
-    </script>
+ document.getElementsByTagName('h4')[0].innerHTML = 'Your TDEE is ' + TDEE.toFixed(2) + ' calories per day';
+
+</script>
 
 {% endblock %}
