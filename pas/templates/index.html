@@ -16,8 +16,7 @@
 <div class="container">
 
     {% csrf_token %}
-    <form class="form-inline" method="POST" action=""> 
-	
+    <form class="form-inline" method="GET" action="render_results/">
 	<!-- <input class='form-control' type="text" id="first_name" name="first_name" placeholder="First Name"/>  -->
 	<input class='form-control' type="text" id="first_name" name="first_name" placeholder="First Name"/> 
 	<br>
@@ -45,9 +44,12 @@
 
 	<input class='form-control' type="text" id="goal_weight" name="goal_weight" placeholder="Goal Weight"/> 
 	<br>
+
+	<input class='form-control' type="text" id="current_height" name="current_height" placeholder="Height in cm"/> 
+	<br>
 	<br>
 
-	<button type="submit" class="btn btn-primary">Find Diet</button>
+	<button type="submit" class="btn btn-primary" name = "submitting">Find Diet</button>
     </form>
 
 </div>

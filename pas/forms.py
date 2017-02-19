@@ -9,4 +9,5 @@ class UserForm(forms.Form):
     gender = forms.CharField(max_length = 200, required = False)
     current_weight = forms.CharField(max_length = 200, required = False)
     goal_weight = forms.CharField(max_length = 200, required = False)
+    current_height = forms.CharField(max_length = 200, required = False)
     

@@ -11,5 +11,6 @@ import pas.views
 
 urlpatterns = [
     url(r'^$', pas.views.index, name='index'),
+    url(r'^render_results/$', pas.views.render_results, name = 'results'),
     url(r'^admin/', include(admin.site.urls)),
 ]

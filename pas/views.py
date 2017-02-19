@@ -9,8 +9,14 @@ from .models import User
 @csrf_exempt 
 def index(request):
     # return HttpResponse('Hello from Python!')
-    if request.method == 'POST':
-        form = UserForm(request.POST)
+            
+    return render(request, 'index.html')
+
+
+def render_results(request, message=""): 
+
+    if request.method == 'GET':
+        form = UserForm(request.GET)
         
         if form.is_valid():
             user = {}
@@ -22,6 +28,7 @@ def index(request):
             user["gender"] = form.cleaned_data["gender"]
             user["current_weight"] = form.cleaned_data["current_weight"]
             user["goal_weight"] = form.cleaned_data["goal_weight"]
+            user["current_height"] = form.cleaned_data["current_height"]
             
             user["hashid"] = str(len(user["first_name"] + user["last_name"] + user["age"] + user["ethnicity"])) + str(user["first_name"] + user["gender"])
 
@@ -34,16 +41,11 @@ def index(request):
                 u = query[0]
                 u.current_weight = user["current_weight"]
                 u.goal_weight = user["goal_weight"]
+                u.current_height = user["current_height"]
             print (query)
             print (user)
-            
-            # return renderresults(request, user)
-            
-    return render(request, 'index.html')
 
-
-def renderresults(request, user=[], message=""):
     context  = {'user' : user , 'message': message}
-    template = 'results.html' 
+    template = 'results.html'
 
     return render(request, template, context)

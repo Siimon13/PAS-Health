@@ -3,6 +3,7 @@
 
 {% block content %}
 
+
 <div class="jumbotron text-center">
   <div class="container">
     <a href="/" class="lang-logo">
@@ -18,7 +19,7 @@
 
     <h1> {{user.first_name}} {{user.last_name}}</h1>
 
-    <h2> TDEE: Run all this info through TDEE equation </h2>
+   <h2> TDEE: Run all this info through TDEE equation </h2>
 
     <h1> Track yourself </h1>
     
@@ -29,5 +30,43 @@
     
         
 </div>
+
+<script type = "text/javascript">
+      var age = "{{user.age}}";
+      var lifestyle = "{{user.lifestyle}}";
+      var height = "{{user.current_height}}";
+      var weight = "{{user.current_weight}}"
+      var gender = "{{user.gender}}"
+      var conversion = 0.45359237;
+      var BMR;
+      var TDEE;
+
+      //Calculate BMR for different gender, depends on User
+      if(gender == 'Male' || gender == 'boy' || gender == 'Boy' || gender == 'male'){
+            var kg = weight * conversion;
+            BMR = 66 + (13.7 * kg) + (5 * height)-(6.8 * age);
+            console.log(BMR);
+      }
+      else{
+        var kg = weight * conversion;
+        BMR = 655 + (9.6*kg) + (1.8*height) - (4.7*age);
+        console.log(BMR);
+      }
+
+      //Calculate the TDEE with the lifestyle selected
+      if(lifestyle == 'Sedentary' || lifestyle == 'sedentary')
+        TDEE = 1.2 * BMR;
+      else if(lifestyle == 'Lightly active' || lifestyle == 'lightly active' || lifestyle == 'Lightly Active')
+          TDEE = 1.375 * BMR;
+      else if(lifestyle == 'Moderately active' || lifestyle == 'moderately active' || lifestyle == 'Moderately Active')
+          TDEE = 1.55 * BMR;
+      else if(lifestyle == 'Very active' || lifestyle == 'very active' || lifestlye == 'Very Active')
+          TDEE = 1.725 * BMR;
+      else if(lifestyle == 'Extremely active' || lifestyle == 'extremely active' || lifestyle == 'Extremely Active')
+          TDEE = 1.9 * BMR;
+
+     document.getElementsByTagName('h2')[0].innerHTML = 'Your TDEE is ' + TDEE.toFixed(2) + ' calories per day';
+
+    </script>
 
 {% endblock %}

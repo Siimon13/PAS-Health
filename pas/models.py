@@ -12,4 +12,5 @@ class User(models.Model):
     goal_weight = models.CharField(max_length = 200, null = False)
     age = models.CharField(max_length = 200, null = False)
     lifestyle = models.CharField(max_length = 200, null = False)
+    current_height = models.CharField(max_length = 200, null = False)
     hashid = models.CharField(max_length = 50, null = False)
