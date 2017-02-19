@@ -1,6 +1,6 @@
 from django import forms
 
-diets = ["Paleo", "Low-Carb", "Ultra Low-Fat", "Dukan", "Atkins", "HCG", "Zone Diet", "Fasting"]
+diets = ["null","Paleo", "Low-Carb", "Ultra Low-Fat", "Dukan", "Atkins", "HCG", "Zone Diet", "Fasting"]
 
 class UserForm(forms.Form):
     first_name = forms.CharField(max_length = 200, required = False)

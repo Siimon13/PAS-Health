@@ -21,13 +21,25 @@
 
     <h4> TDEE: Run all this info through TDEE equation </h4>
     <a href="#" title="Total Daily Energy Expenditure:" data-toggle="popover" data-trigger="focus" data-content=" To gain weight you eat more than your TDEE and to lose weight you eat less."> What is TDEE? </a>
+    <br>
+    <h4>Ethnicity:{{user.ethnicity}} </h4>
 
-    <span class="span3" tabindex="0">Hide Me</span>
-    <span class="span2" tabindex="0">Show Me</span>
-    <p class="alert" >Some alarming information here</p>
-    <p class="alert" >Some more info</p>
+    <h4>Age:{{user.age}} </h4>
 
-    <h2> Recommended Diet: </h2>
+    <h4>Lifestyle:{{user.lifestyle}} </h4>
+
+    <h4>Gender:{{user.gender}} </h4>
+
+    <h4>Height:{{user.current_height}} </h4>
+
+    <h4>Current Weight:{{user.current_weight}} </h4>
+
+    <h4>Goal Weight:{{user.goal_weight}} </h4>
+    
+    <h4>Current Diet:{{user.current_diet}}</h4>
+
+    <h3> Recommended Diet: {{recommended_diet}} </h3>
+
     <h3> Select a diet: </h3>
 
     <form class="form-inline" method="POST" action="/update_results/">
@@ -36,311 +48,429 @@
 
 	<div class="btn-group" data-toggle="buttons">
 
-	    <label class="btn btn-info">
-		<input type="radio" name="options" id="option1" value="Paleo" autocomplete="off" checked> Paleo
-	    </label>
-
-	    <br>
-	    <br>
-
-	    <p>The paleo diet emphasizes whole foods, lean protein, vegetables, fruits, nuts and seeds, while avoiding processed foods, sugar, dairy and grains. </p> 
-	    <br>
-
-	    <h5> Sample Macro Table </h5>
-	    
-	    <table class = "table">
-		<caption>Basic Table Layout</caption>
-		
-		<thead>
-		    <tr>
-			<th>Macronutrient</th>
-			<th>Percentage Of Total Colarie Intake</th>
-		    </tr>
-		</thead>
-		
-		<tbody>
-		    <tr>
-			<td>Protein</td>
-			<td>15%</td>
-		    </tr>
-
-		    <tr>
-			<td>Carbohydrates</td>
-			<td>20%</td>
-		    </tr>
-
-		    <tr>
-			<td>Fat</td>
-			<td>65%</td>
-		    </tr>
-		    
-		</tbody>
-		
-	    </table>
-
-
-	    <br>
+	    <input type="radio" name="options" id="hide" value="null" class="hide" autocomplete="off" checked>  
 
 	    <label class="btn btn-info">
-		<input type="radio" name="options" id="option2" value="Low-Carb" autocomplete="off"> Low-Carb
-	    </label>
-	    <br>
-	    <br>
-	    <p>Low-carb diets are based on eating unlimited amounts of protein and fat, while severely limiting your carb intake. </p>
-	    <br>
+		<input type="radio" name="options" id="option1" value="Paleo" autocomplete="off"> Paleo   </label>
+		<span class="paleo"> <a>show more </a> </span>		
 
-	    <h5> Sample Macro Table </h5>
-	    
-	    <table class = "table">
-		<caption>Basic Table Layout</caption>
-		
-		<thead>
-		    <tr>
-			<th>Macronutrient</th>
-			<th>Percentage Of Total Colarie Intake</th>
-		    </tr>
-		</thead>
-		
-		<tbody>
-		    <tr>
-			<td>Protein</td>
-			<td>25%</td>
-		    </tr>
+		<br>
+		<br>
 
-		    <tr>
-			<td>Carbohydrates</td>
-			<td>10%</td>
-		    </tr>
 
-		    <tr>
-			<td>Fat</td>
-			<td>65%</td>
-		    </tr>
+		<div class="paleohide">
+
+		    <p>The paleo diet emphasizes whole foods, lean protein, vegetables, fruits, nuts and seeds, while avoiding processed foods, sugar, dairy and grains. </p> 
+		    <br>
+
+		    <h5> Sample Macro Table </h5>
 		    
-		</tbody>
-		
-	    </table>
+		    <table class = "table">
+			
+			<thead>
+			    <tr>
+				<th>Macronutrient</th>
+				<th>Percentage Of Total Colarie Intake</th>
+			    </tr>
+			</thead>
+			
+			<tbody>
+			    <tr>
+				<td>Protein</td>
+				<td>15%</td>
+			    </tr>
 
-	    <label class="btn btn-info">
-		<input type="radio" name="options" id="option3" value="Ultra Low-Fat" autocomplete="off"> Ultra Low-Fat
-	    </label>
-	    <br>
-	    <br>
+			    <tr>
+				<td>Carbohydrates</td>
+				<td>20%</td>
+			    </tr>
 
-	    <p>An ultra low-fat diet contains 10% or fewer calories from fat. The diet is mostly plant-based and has a limited intake of animal products </p>
-	    <br>
+			    <tr>
+				<td>Fat</td>
+				<td>65%</td>
+			    </tr>
+			    
+			</tbody>
+			
+		    </table>
 
-	    <h5> Sample Macro Table </h5>
-	    
-	    <table class = "table">
-		<caption>Basic Table Layout</caption>
-		
-		<thead>
-		    <tr>
-			<th>Macronutrient</th>
-			<th>Percentage Of Total Colarie Intake</th>
-		    </tr>
-		</thead>
-		
-		<tbody>
-		    <tr>
-			<td>Protein</td>
-			<td>10%</td>
-		    </tr>
+		</div>
 
-		    <tr>
-			<td>Carbohydrates</td>
-			<td>80%</td>
-		    </tr>
+		<br>
 
-		    <tr>
-			<td>Fat</td>
-			<td>10%</td>
-		    </tr>
+		<label class="btn btn-info">
+		    <input type="radio" name="options" id="option2" value="Low-Carb" autocomplete="off"> Low-Carb
+		</label>
+
+		<span class="low-carb"> <a>show more </a> </span>		
+		<br>
+		<br>
+
+		<div class="low-carbhide">
+		    <p>Low-carb diets are based on eating unlimited amounts of protein and fat, while severely limiting your carb intake. </p>
+		    <br>
+
+		    <h5> Sample Macro Table </h5>
 		    
-		</tbody>
+		    <table class = "table">
+			
+			<thead>
+			    <tr>
+				<th>Macronutrient</th>
+				<th>Percentage Of Total Colarie Intake</th>
+			    </tr>
+			</thead>
+			
+			<tbody>
+			    <tr>
+				<td>Protein</td>
+				<td>25%</td>
+			    </tr>
+
+			    <tr>
+				<td>Carbohydrates</td>
+				<td>10%</td>
+			    </tr>
+
+			    <tr>
+				<td>Fat</td>
+				<td>65%</td>
+			    </tr>
+			    
+			</tbody>
+			
+		    </table>
+		</div>
 		
-	    </table>
+		<br>
 
-	    <label class="btn btn-info">
-		<input type="radio" name="options" id="option3" value="Atkins" autocomplete="off"> Atkins
-	    </label>
-	    <br>
-	    <br>
+		<label class="btn btn-info">
+		    <input type="radio" name="options" id="option3" value="Ultra Low-Fat" autocomplete="off"> Ultra Low-Fat
+		</label>
 
-	    <p>The Atkins diet is split into four phases. It starts with an induction phase, during which you eat under 20 grams of carbs per day for two weeks. The other phases involve slowly reintroducing healthy carbs back into your diet as you approach your goal weight. </p>
-	    <br>
+		<span class="low-fat"> <a>show more </a> </span>		
 
-	    <h5> Sample Macro Table </h5>
-	    
-	    <table class = "table">
-		<caption>Basic Table Layout</caption>
-		
-		<thead>
-		    <tr>
-			<th>Macronutrient</th>
-			<th>Percentage Of Total Colarie Intake</th>
-		    </tr>
-		</thead>
-		
-		<tbody>
-		    <tr>
-			<td>Protein</td>
-			<td>35%</td>
-		    </tr>
+		<br>
+		<br>
 
-		    <tr>
-			<td>Carbohydrates</td>
-			<td>10%</td>
-		    </tr>
+		<div class="low-fathide">
+		    <p>An ultra low-fat diet contains 10% or fewer calories from fat. The diet is mostly plant-based and has a limited intake of animal products </p>
+		    <br>
 
-		    <tr>
-			<td>Fat</td>
-			<td>55%</td>
-		    </tr>
+		    <h5> Sample Macro Table </h5>
 		    
-		</tbody>
-		
-	    </table>
+		    <table class = "table">
+			
+			<thead>
+			    <tr>
+				<th>Macronutrient</th>
+				<th>Percentage Of Total Colarie Intake</th>
+			    </tr>
+			</thead>
+			
+			<tbody>
+			    <tr>
+				<td>Protein</td>
+				<td>10%</td>
+			    </tr>
 
-	    <label class="btn btn-info">
-		<input type="radio" name="options" id="option3" value="Zone Diet" autocomplete="off"> Zone Diet
-	    </label>
-	    <br>
-	    <br>
+			    <tr>
+				<td>Carbohydrates</td>
+				<td>80%</td>
+			    </tr>
 
-	    <p>The Zone diet recommends balancing each meal with one-third protein, two-thirds colorful fruits and veggies and a dash of fat, namely monounsaturated oil such as olive oil, avocado or almonds.  </p>
-	    <br>
+			    <tr>
+				<td>Fat</td>
+				<td>10%</td>
+			    </tr>
+			    
+			</tbody>
+			
+		    </table>
+		</div>
 
-	    <h5> Sample Macro Table </h5>
-	    
-	    <table class = "table">
-		<caption>Basic Table Layout</caption>
-		
-		<thead>
-		    <tr>
-			<th>Macronutrient</th>
-			<th>Percentage Of Total Colarie Intake</th>
-		    </tr>
-		</thead>
-		
-		<tbody>
-		    <tr>
-			<td>Protein</td>
-			<td>30%</td>
-		    </tr>
+		<br>
 
-		    <tr>
-			<td>Carbohydrates</td>
-			<td>40%</td>
-		    </tr>
+		<label class="btn btn-info">
+		    <input type="radio" name="options" id="option3" value="Atkins" autocomplete="off"> Atkins
+		</label>
 
-		    <tr>
-			<td>Fat</td>
-			<td>30%</td>
-		    </tr>
+		<span class="atkins"> <a>show more </a> </span>		
+
+		<br>
+		<br>
+
+		<div class="atkinshide">
+		    <p>The Atkins diet is split into four phases. It starts with an induction phase, during which you eat under 20 grams of carbs per day for two weeks. The other phases involve slowly reintroducing healthy carbs back into your diet as you approach your goal weight. </p>
+		    <br>
+
+		    <h5> Sample Macro Table </h5>
 		    
-		</tbody>
-		
-	    </table>
+		    <table class = "table">
+			
+			<thead>
+			    <tr>
+				<th>Macronutrient</th>
+				<th>Percentage Of Total Colarie Intake</th>
+			    </tr>
+			</thead>
+			
+			<tbody>
+			    <tr>
+				<td>Protein</td>
+				<td>35%</td>
+			    </tr>
 
-	    <label class="btn btn-info">
-		<input type="radio" name="options" id="option3" value="Fasting" autocomplete="off"> Intermittent Fasting
-	    </label>
-	    <br>
-	    <br>
+			    <tr>
+				<td>Carbohydrates</td>
+				<td>10%</td>
+			    </tr>
 
-	    <p> Intermittent fasting is commonly used for weight loss because it leads to relatively easy calorie restriction. It can make you eat fewer calories overall, as long as you don’t overcompensate by eating much more during the eating periods.</p>
+			    <tr>
+				<td>Fat</td>
+				<td>55%</td>
+			    </tr>
+			    
+			</tbody>
+			
+		    </table>
+		</div>
 
-	    <h5> Most Popular Ways </h5>
-	    
-	    <table class = "table">
-		<caption>Basic Table Layout</caption>
-		
-		<thead>
-		    <tr>
-			<th>Name</th>
-			<th>Process</th>
-		    </tr>
-		</thead>
-		
-		<tbody>
-		    <tr>
-			<td>16/8</td>
-			<td>Involves skipping breakfast and restricting your daily eating period to 8 hours, subsequently fasting for the remaining 16 hours of the day.</td>
-		    </tr>
+		<br>
 
-		    <tr>
-			<td>Eat-Stop-Eat</td>
-			<td>Involves 24-hour fasts once or twice per week on non-consecutive days.</td>
-		    </tr>
+		<label class="btn btn-info">
+		    <input type="radio" name="options" id="option3" value="Zone Diet" autocomplete="off"> Zone Diet
+		</label>
 
-		    <tr>
-			<td>5:2</td>
-			<td>On two non-consecutive days of the week, you restrict your intake to 500–600 calories. On the five remaining days, you eat like normal.</td>
-		    </tr>
+		<span class="zone"> <a>show more </a> </span>		
 
-		    <tr>
-			<td>Warrior</td>
-			<td> Eat small amounts of raw fruits and vegetables during the day and one huge meal at night, basically fasting during the day and feasting at night within a 4-hour window.</td>
-		    </tr>
+		<br>
+		<br>
+
+		<div class="zonehide">
+		    <p>The Zone diet recommends balancing each meal with one-third protein, two-thirds colorful fruits and veggies and a dash of fat, namely monounsaturated oil such as olive oil, avocado or almonds.  </p>
+		    <br>
+
+		    <h5> Sample Macro Table </h5>
 		    
-		</tbody>
-		
-	    </table>
+		    <table class = "table">
+			
+			<thead>
+			    <tr>
+				<th>Macronutrient</th>
+				<th>Percentage Of Total Colarie Intake</th>
+			    </tr>
+			</thead>
+			
+			<tbody>
+			    <tr>
+				<td>Protein</td>
+				<td>30%</td>
+			    </tr>
+
+			    <tr>
+				<td>Carbohydrates</td>
+				<td>40%</td>
+			    </tr>
+
+			    <tr>
+				<td>Fat</td>
+				<td>30%</td>
+			    </tr>
+			    
+			</tbody>
+			
+		    </table>
+		</div>
+
+		<br>
+
+		<label class="btn btn-info">
+		    <input type="radio" name="options" id="option3" value="Fasting" autocomplete="off"> Intermittent Fasting
+		</label>
+
+		<span class="fast"> <a>show more </a> </span>		
+
+		<br>
+		<br>
+
+		<div class="fasthide">
+		    <p> Intermittent fasting is commonly used for weight loss because it leads to relatively easy calorie restriction. It can make you eat fewer calories overall, as long as you don’t overcompensate by eating much more during the eating periods.</p>
+
+		    <h5> Most Popular Ways </h5>
+		    
+		    <table class = "table">
+			
+			<thead>
+			    <tr>
+				<th>Name</th>
+				<th>Process</th>
+			    </tr>
+			</thead>
+			
+			<tbody>
+			    <tr>
+				<td>16/8</td>
+				<td>Involves skipping breakfast and restricting your daily eating period to 8 hours, subsequently fasting for the remaining 16 hours of the day.</td>
+			    </tr>
+
+			    <tr>
+				<td>Eat-Stop-Eat</td>
+				<td>Involves 24-hour fasts once or twice per week on non-consecutive days.</td>
+			    </tr>
+
+			    <tr>
+				<td>5:2</td>
+				<td>On two non-consecutive days of the week, you restrict your intake to 500–600 calories. On the five remaining days, you eat like normal.</td>
+			    </tr>
+
+			    <tr>
+				<td>Warrior</td>
+				<td> Eat small amounts of raw fruits and vegetables during the day and one huge meal at night, basically fasting during the day and feasting at night within a 4-hour window.</td>
+			    </tr>
+			    
+			</tbody>
+			
+		    </table>
+		</div>
 
 	</div>
 
-    
+	
 	{% csrf_token %}
 	
 	<div>
-    <button type="submit" class="btn btn-primary" name = "submitting">Update Info</button>
-</div>
+	    <button type="submit" class="btn btn-primary" name = "submitting">Update Info</button>
+	</div>
 
     </form>
     
 </div>
 
 <script type = "text/javascript">
- var age = "{{user.age}}";
- var lifestyle = "{{user.lifestyle}}";
- var height = "{{user.current_height}}";
- var weight = "{{user.current_weight}}"
- var gender = "{{user.gender}}"
- var conversion = 0.45359237;
- var BMR;
- var TDEE;
+    var age = "{{user.age}}";
+    var lifestyle = "{{user.lifestyle}}";
+    var height = "{{user.current_height}}";
+    var weight = "{{user.current_weight}}"
+    var gender = "{{user.gender}}"
+    var conversion = 0.45359237;
+    var BMR;
+    var TDEE;
 
- $(document).ready(function(){
-     $('[data-toggle="popover"]').popover();   
- });
+    $(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+    });
 
- //Calculate BMR for different gender, depends on User
- if(gender == 'Male' || gender == 'boy' || gender == 'Boy' || gender == 'male'){
-     var kg = weight * conversion;
-     BMR = 66 + (13.7 * kg) + (5 * height)-(6.8 * age);
-     console.log(BMR);
- }
- else{
-     var kg = weight * conversion;
-     BMR = 655 + (9.6*kg) + (1.8*height) - (4.7*age);
-     console.log(BMR);
- }
+    //Calculate BMR for different gender, depends on User
+    if(gender == 'Male' || gender == 'boy' || gender == 'Boy' || gender == 'male'){
+    var kg = weight * conversion;
+    BMR = 66 + (13.7 * kg) + (5 * height)-(6.8 * age);
+    console.log(BMR);
+    }
+    else{
+    var kg = weight * conversion;
+    BMR = 655 + (9.6*kg) + (1.8*height) - (4.7*age);
+    console.log(BMR);
+    }
 
- //Calculate the TDEE with the lifestyle selected
- if(lifestyle == 'Sedentary' || lifestyle == 'sedentary')
-     TDEE = 1.2 * BMR;
- else if(lifestyle == 'Lightly active' || lifestyle == 'lightly active' || lifestyle == 'Lightly Active')
-     TDEE = 1.375 * BMR;
- else if(lifestyle == 'Moderately active' || lifestyle == 'moderately active' || lifestyle == 'Moderately Active')
-     TDEE = 1.55 * BMR;
- else if(lifestyle == 'Very active' || lifestyle == 'very active' || lifestlye == 'Very Active')
-     TDEE = 1.725 * BMR;
- else if(lifestyle == 'Extremely active' || lifestyle == 'extremely active' || lifestyle == 'Extremely Active')
-     TDEE = 1.9 * BMR;
+    //Calculate the TDEE with the lifestyle selected
+    if(lifestyle == 'Sedentary' || lifestyle == 'sedentary')
+    TDEE = 1.2 * BMR;
+    else if(lifestyle == 'Lightly active' || lifestyle == 'lightly active' || lifestyle == 'Lightly Active')
+    TDEE = 1.375 * BMR;
+    else if(lifestyle == 'Moderately active' || lifestyle == 'moderately active' || lifestyle == 'Moderately Active')
+    TDEE = 1.55 * BMR;
+    else if(lifestyle == 'Very active' || lifestyle == 'very active' || lifestlye == 'Very Active')
+    TDEE = 1.725 * BMR;
+    else if(lifestyle == 'Extremely active' || lifestyle == 'extremely active' || lifestyle == 'Extremely Active')
+    TDEE = 1.9 * BMR;
 
- document.getElementsByTagName('h4')[0].innerHTML = 'Your TDEE is ' + TDEE.toFixed(2) + ' calories per day';
+    document.getElementsByTagName('h4')[0].innerHTML = 'Your TDEE is ' + TDEE.toFixed(2) + ' calories per day';
+
+    var paleoShow = document.getElementsByClassName("paleo")[0]
+
+    paleoShow.onclick = function(){
+    var paleoInfo = document.getElementsByClassName("paleohide")[0]
+    if (paleoInfo.style.display == 'block'){
+    paleoInfo.style.display = 'none';
+    paleoShow.innerHTML = "<a>show more</a>"
+    }
+    else {
+    paleoShow.innerHTML = "<a>hide</a>"
+    paleoInfo.style.display = 'block';
+    }
+    }
+
+    var lowcarbShow = document.getElementsByClassName("low-carb")[0]
+
+    lowcarbShow.onclick = function(){
+    var lowcarbInfo = document.getElementsByClassName("low-carbhide")[0]
+    if (lowcarbInfo.style.display == 'block'){
+    lowcarbInfo.style.display = 'none';
+    lowcarbShow.innerHTML = "<a>show more</a>"
+    }
+    else {
+    lowcarbShow.innerHTML = "<a>hide</a>"
+    lowcarbInfo.style.display = 'block';
+    }
+    }
+
+    var lowfatShow = document.getElementsByClassName("low-fat")[0]
+
+    lowfatShow.onclick = function(){
+    var lowfatInfo = document.getElementsByClassName("low-fathide")[0]
+    if (lowfatInfo.style.display == 'block'){
+    lowfatInfo.style.display = 'none';
+    lowfatShow.innerHTML = "<a>show more</a>"
+    }
+    else {
+    lowfatShow.innerHTML = "<a>hide</a>"
+    lowfatInfo.style.display = 'block';
+    }
+    }
+
+    var atkinsShow = document.getElementsByClassName("atkins")[0]
+
+    atkinsShow.onclick = function(){
+    var atkinsInfo = document.getElementsByClassName("atkinshide")[0]
+    if (atkinsInfo.style.display == 'block'){
+    atkinsInfo.style.display = 'none';
+    atkinsShow.innerHTML = "<a>show more</a>"
+    }
+    else {
+    atkinsShow.innerHTML = "<a>hide</a>"
+    atkinsInfo.style.display = 'block';
+    }
+    }
+
+    var zoneShow = document.getElementsByClassName("zone")[0]
+
+    zoneShow.onclick = function(){
+    var zoneInfo = document.getElementsByClassName("zonehide")[0]
+    if (zoneInfo.style.display == 'block'){
+    zoneInfo.style.display = 'none';
+    zoneShow.innerHTML = "<a>show more</a>"
+    }
+    else {
+    zoneShow.innerHTML = "<a>hide</a>"
+    zoneInfo.style.display = 'block';
+    }
+    }
+
+    var fastShow = document.getElementsByClassName("fast")[0]
+
+    fastShow.onclick = function(){
+    var fastInfo = document.getElementsByClassName("fasthide")[0]
+    if (fastInfo.style.display == 'block'){
+    fastInfo.style.display = 'none';
+    fastShow.innerHTML = "<a>show more</a>"
+    }
+    else {
+    fastShow.innerHTML = "<a>hide</a>"
+    fastInfo.style.display = 'block';
+    }
+    }
+
 
 </script>
 
