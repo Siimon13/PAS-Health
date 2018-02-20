@@ -1,37 +1,51 @@
-# python-getting-started
+--------------------------------------------------------------------------------------------------
+Inspiration
+--------------------------------------------------------------------------------------------------
+Losing weight is really hard and there's a lot of fad diets with no science. If only there was something that collects data on diets and could recommend a working one.
 
-Barebone WebApp
+--------------------------------------------------------------------------------------------------
+What it does
+--------------------------------------------------------------------------------------------------
+Uses a simple machine learning to learn from entries and daily users to recommend diets that work.
 
-## Running Locally
+--------------------------------------------------------------------------------------------------
+How we built it
+--------------------------------------------------------------------------------------------------
+Web-app built with Django and AI, written in python
 
-Make sure you have Python [installed properly](http://install.python-guide.org)
-```sh
-$ git clone https://github.com/Siimon13/PAS-Health.git
-$ cd PAS-Health
+--------------------------------------------------------------------------------------------------
+Challenges we ran into
+--------------------------------------------------------------------------------------------------
+Normalizing the data and getting the thereshold correct
 
-$ pip install -r requirements.txt
+--------------------------------------------------------------------------------------------------
+Accomplishments that we're proud of
+--------------------------------------------------------------------------------------------------
+Working AI
 
-$ python manage.py migrate
-$ python manage.py collectstatic
+--------------------------------------------------------------------------------------------------
+What we learned
+--------------------------------------------------------------------------------------------------
+Ajax calls, AI fundamentals
 
-$ python manage.py runserver
-```
+--------------------------------------------------------------------------------------------------
+What's next for PAS Health
+--------------------------------------------------------------------------------------------------
+Improve AI and talk with genetics lab
 
-Your app should now be running on [localhost:8000](http://localhost:8000/).
+--------------------------------------------------------------------------------------------------
+link
+--------------------------------------------------------------------------------------------------
+http://pas-health.herokuapp.com/
 
-## Documentation
+--------------------------------------------------------------------------------------------------
+Built With
+--------------------------------------------------------------------------------------------------
+    django
+    python
+    sql
+    ai
+    html5
+    css3
+    javascript
 
-The app is based in pas
-The static folder is in gettingstarted(For imgs/js/css)
-
-The templates have examples of loading static and forms
-
-All code is ran through view.py(controller)
-
-Making a new form requires you to add a valid form to form.py [Read More](https://docs.djangoproject.com/en/1.10/topics/forms/)
-
-If you want to use a database, use model.py [Read More](https://docs.djangoproject.com/en/1.10/topics/db/models/)
-
-Database code is added, Database can take sql injections by using raw() [Read More](https://docs.djangoproject.com/en/1.10/topics/db/sql/)
-
-Using Bootstrap for CSS
